@@ -1,0 +1,3 @@
+[submodule "MQ5"]
+	path = MQ5
+	url = https://github.com/mihailnica10/yebichu-mql-metatrader5.git
