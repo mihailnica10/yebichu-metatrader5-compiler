@@ -44,13 +44,19 @@ cp "$SOURCE" "$DEST_DIR/$SAFE_NAME"
 
 # Upsert custom includes
 if [ -d "/workspace/include" ]; then
-    cp -r "/workspace/include/"* "$MQL_DIR/Include/"
+    shopt -s nullglob
+    for f in "/workspace/include/"*; do
+        cp -r "$f" "$MQL_DIR/Include/"
+    done
 fi
 
 # Upsert libraries
 if [ -d "/workspace/libraries" ]; then
+    shopt -s nullglob
     mkdir -p "$MT5_DIR/Libraries"
-    cp -r "/workspace/libraries/"* "$MT5_DIR/Libraries/"
+    for f in "/workspace/libraries/"*; do
+        cp -r "$f" "$MT5_DIR/Libraries/"
+    done
 fi
 
 # Windows path for MetaEditor (safe name, no spaces/special chars)
